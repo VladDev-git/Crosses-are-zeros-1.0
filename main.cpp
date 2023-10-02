@@ -10,3 +10,10 @@ const char TIE = 'T';
 const char NO_ONE = 'N';
 const char EMPTY = ' ';
 
+int main()
+{
+
+
+
+	return 0;
+}
