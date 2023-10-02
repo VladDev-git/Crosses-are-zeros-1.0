@@ -9,7 +9,6 @@ const char O = 'O';
 const char TIE = 'T';
 const char NO_ONE = 'N';
 const char EMPTY = ' ';
-//tb thio
 
 void instruction();
 char askYesNo(const std::string& question);
