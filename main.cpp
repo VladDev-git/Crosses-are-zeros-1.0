@@ -31,12 +31,22 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-
+	GameBoard board;
+	board.displayBoard();
 
 	return 0;
 }
 
 void instruction()
 {
-
+	std::cout << "Ласкамо просимо у найінтелектуальнішу гру Хркстики-нулики." << std::endl;
+	std::cout << "Тут ти, представник людської раси, зможеш позмагатися з комп'ютером." << std::endl;
+	std::cout << "Щоб зробити хід потрібно вибрати число від 0 до 8" << std::endl;
+	std::cout << "Число відповідає положенню на ігровій дошці, як це показано на малюнку:\n" << std::endl;
+	std::cout << " 0 | 1 | 2 \n";
+	std::cout << " ----------\n";
+	std::cout << " 3 | 4 | 5 \n";
+	std::cout << " ----------\n";
+	std::cout << " 6 | 7 | 8 \n\n";
+	std::cout << "Приготуйся людино, бій от от почнеться!\n\n";
 }

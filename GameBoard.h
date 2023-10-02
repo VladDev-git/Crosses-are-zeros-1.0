@@ -10,5 +10,7 @@ private:
 public:
 
 	GameBoard();
+
+	void displayBoard();
 };
 
