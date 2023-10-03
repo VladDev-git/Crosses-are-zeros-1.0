@@ -5,6 +5,7 @@
 #include <Windows.h>
 // classes
 #include "GameBoard.h"
+#include "Engine.h"
 
 const char X = 'X';
 const char O = 'O';
@@ -31,8 +32,8 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	GameBoard board;
-	board.displayBoard();
+	//GameBoard board;
+	//board.displayBoard();
 
 	return 0;
 }
