@@ -14,5 +14,7 @@ public:
 
 	Engine();
 	char askYesNo(const std::string& question);
+	int askNumber(const std::string& questoin, const int& higth, const int& low = 0);
+	char
 };
 
