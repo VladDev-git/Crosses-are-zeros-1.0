@@ -15,3 +15,8 @@ void GameBoard::displayBoard()
 	std::cout << "\n\t" << board[6] << " | " << board[7] << " | " << board[8];
 	std::cout << "\n\n";
 }
+
+char GameBoard::winner()
+{
+	
+}
