@@ -43,6 +43,31 @@ GameBoard Engine::GetBoard()
 	return gboard;
 }
 
+char Engine::operator[](int index) const
+{
+	if (index >= 0 && index < gboard.board.size())
+	{
+		return gboard[index];
+	}
+	else
+	{
+		return '0';
+	}
+}
+
+char& Engine::operator[](int index)
+{
+	if (index >= 0 && index < gboard.board.size())
+	{
+		return gboard[index];
+	}
+	else
+	{
+		static char s = '0';
+		return s;
+	}
+}
+
 bool Engine::isLegal(int move)
 {
 	return gboard[move] == ' ';
@@ -128,8 +153,24 @@ int Engine::computerMove(char computer)
 
 void Engine::anonceWinner(const char& winner, const char& human, const char& computer)
 {
-
+	if (winner == human)
+	{
+		std::cout << "Вітаю людино! Ти переміг.";
+	}
+	if (winner == computer)
+	{
+		std::cout << "Комп'ютер переміг, твоєму шкіряному мозку ніколи не зрівнятись з процесором.";
+	}
+	else
+	{
+		std::cout << "Нічия! Ти виявився доволі достойним суперником людино.";
+	}
 }
+
+//size_t Engine::GetSizeE()
+//{
+//	return gboard.GetSize();
+//}
 
 char askYesNo(const std::string& question)
 {

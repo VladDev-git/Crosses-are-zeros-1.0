@@ -27,8 +27,12 @@ public:
 	int humanMove(char human);
 	int computerMove(char computer);
 	void anonceWinner(const char& winner, const char& human, const char& computer);
+	//size_t GetSizeE();
 
 	GameBoard GetBoard();
+
+	char operator[](int index) const;
+	char& operator[](int index);
 
 	//friend class GameBoard;
 };

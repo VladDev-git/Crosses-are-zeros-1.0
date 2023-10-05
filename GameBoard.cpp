@@ -56,7 +56,7 @@ size_t GameBoard::GetSize()
 
 char GameBoard::operator[](int index) const
 {
-	if (index <= 0 && index < board.size())
+	if (index >= 0 && index < board.size())
 	{
 		return board[index];
 	}
@@ -68,7 +68,7 @@ char GameBoard::operator[](int index) const
 
 char& GameBoard::operator[](int index)
 {
-	if (index <= 0 && index < board.size())
+	if (index >= 0 && index < board.size())
 	{
 		return board[index];
 	}

@@ -33,8 +33,32 @@ int main()
 	SetConsoleOutputCP(1251);
 
 	Engine eng;
+	int move = 0;
+
+	instruction();
+
+	char human = eng.humanPiece();
+	char computer = eng.opponent(human);
+	char turn = X;
 	eng.displayBoardE();
-	
+
+	while (eng.winnerE() == NO_ONE)
+	{
+		if (turn == human)
+		{
+			move = eng.humanMove(human);
+			eng[move] = human;
+		}
+		else
+		{
+			move = eng.computerMove(computer);
+			eng[move] = computer;
+		}
+		eng.displayBoardE();
+		turn = eng.opponent(turn);
+	}
+	eng.anonceWinner(eng.winnerE(), human, computer);
+	 
 	return 0;
 }
 
