@@ -1,5 +1,7 @@
 #include "Engine.h"
 
+//int askNumber(const std::string& questoin, const int& higth, const int& low);
+
 Engine::Engine()
 	: gboard()
 {
@@ -54,6 +56,19 @@ char Engine::winnerE()
 }
 
 int Engine::humanMove(char human)
+{
+	int move = askNumber("«роб≥ть св≥й х≥д.", (gboard.GetSize() - 1));
+	while (!isLegal(move))
+	{
+		std::cout << "“в≥й х≥д неправильний тупа шк≥р€на ≥стото, спробуй ще раз." << std::endl;
+		move = askNumber("«роб≥ть св≥й х≥д.", (gboard.GetSize() - 1));
+	}
+	std::cout << "’≥д зроблено.\n";
+
+	return move;
+}
+
+int Engine::computerMove(char computer)
 {
 	
 }

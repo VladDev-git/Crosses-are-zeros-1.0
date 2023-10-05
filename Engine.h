@@ -25,6 +25,7 @@ public:
 	bool isLegal(int move);
 	char winnerE();
 	int humanMove(char human);
+	int computerMove(char computer);
 
 	GameBoard GetBoard();
 

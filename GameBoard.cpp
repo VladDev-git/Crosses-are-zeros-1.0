@@ -49,6 +49,11 @@ char GameBoard::winner()
 	return NO_ONE_E; // якщо н≥ одна з умов завершенн€ гри не виконалась то повертаЇтьс€ NO_ONE ≥ гра продовжуЇтьс€
 }
 
+size_t GameBoard::GetSize()
+{
+	return board.size();
+}
+
 char GameBoard::operator[](int index) const
 {
 	if (index <= 0 && index < board.size())

@@ -21,7 +21,7 @@ const char EMPTY = ' ';
 //void displayBoard(const std::vector<char>& board);                               +
 //char winner(const std::vector<char>& board);                                     +
 //inline bool isLegal(int move, const std::vector<char>& board);                   +
-//int humanMove(const std::vector<char>& board, char human);
+//int humanMove(const std::vector<char>& board, char human);                       +
 //int computerMove(std::vector<char> board, char computer);
 //void anonceWinner(const char& winner, const char& human, const char& computer);
 

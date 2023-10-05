@@ -15,6 +15,7 @@ public:
 
 	void displayBoard();
 	char winner();
+	size_t GetSize();
 
 	char operator[](int index) const;
 	char& operator[](int index);
