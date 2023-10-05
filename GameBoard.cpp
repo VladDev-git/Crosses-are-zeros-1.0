@@ -19,7 +19,34 @@ void GameBoard::displayBoard()
 
 char GameBoard::winner()
 {
-	return 0;
+	const int WINING_ROWS[8][3] = { // ¬играшн≥ р€ди
+		{0,1,2},
+		{3,4,5},
+		{6,7,8},
+		{0,3,6},
+		{1,4,7},
+		{2,5,8},
+		{0,4,8},
+		{2,4,6}
+	};
+
+	const int TOTAL_ROWS = 8;
+	for (auto row = 0; row < TOTAL_ROWS; ++row) // ѕошук виграшних р€д≥в на ≥гровому пол≥
+	{
+		if ((board[WINING_ROWS[row][0]] != EMPTY_E) &&
+			(board[WINING_ROWS[row][0]] == board[WINING_ROWS[row][1]]) &&
+			(board[WINING_ROWS[row][1]] == board[WINING_ROWS[row][2]]))
+		{
+			return board[WINING_ROWS[row][0]];
+		}
+	}
+
+	if (std::count(board.begin(), board.end(), EMPTY_E) == 0) // якщо переможц€ немаЇ, перев≥р€Їмо чи не наступила н≥чи€
+	{			                                            // тобто, чи залишились на пол≥ пуст≥ кл≥тинки
+		return TIE_E;
+	}
+
+	return NO_ONE_E; // якщо н≥ одна з умов завершенн€ гри не виконалась то повертаЇтьс€ NO_ONE ≥ гра продовжуЇтьс€
 }
 
 char GameBoard::operator[](int index) const

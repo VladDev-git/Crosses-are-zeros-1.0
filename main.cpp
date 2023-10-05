@@ -19,7 +19,7 @@ const char EMPTY = ' ';
 //char humanPiece();                                                               +
 //char opponent(char& piece);                                                      +
 //void displayBoard(const std::vector<char>& board);                               +
-//char winner(const std::vector<char>& board);
+//char winner(const std::vector<char>& board);                                     +
 //inline bool isLegal(int move, const std::vector<char>& board);                   +
 //int humanMove(const std::vector<char>& board, char human);
 //int computerMove(std::vector<char> board, char computer);

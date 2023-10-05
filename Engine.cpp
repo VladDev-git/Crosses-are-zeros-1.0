@@ -48,6 +48,16 @@ bool Engine::isLegal(int move)
 	return gboard[move] == ' ';
 }
 
+char Engine::winnerE()
+{
+	return gboard.winner();
+}
+
+int Engine::humanMove(char human)
+{
+	
+}
+
 char askYesNo(const std::string& question)
 {
 	char response;
