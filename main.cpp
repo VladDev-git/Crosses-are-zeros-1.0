@@ -22,7 +22,7 @@ const char EMPTY = ' ';
 //char winner(const std::vector<char>& board);                                     +
 //inline bool isLegal(int move, const std::vector<char>& board);                   +
 //int humanMove(const std::vector<char>& board, char human);                       +
-//int computerMove(std::vector<char> board, char computer);
+//int computerMove(std::vector<char> board, char computer);                        +
 //void anonceWinner(const char& winner, const char& human, const char& computer);
 
 void instruction();
@@ -32,9 +32,6 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	//GameBoard board;
-	//board.displayBoard();
-	//Engine::opponent('X');
 	Engine eng;
 	eng.displayBoardE();
 	

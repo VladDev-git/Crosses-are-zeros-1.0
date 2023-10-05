@@ -1,7 +1,5 @@
 #include "Engine.h"
 
-//int askNumber(const std::string& questoin, const int& higth, const int& low);
-
 Engine::Engine()
 	: gboard()
 {
@@ -70,7 +68,62 @@ int Engine::humanMove(char human)
 
 int Engine::computerMove(char computer)
 {
-	
+	unsigned int move = 0;
+	bool found = false;
+
+	while (!found && move < gboard.GetSize()) // Якщо комп'ютер може зробити переможний хід, то він його робить (Найвищий приорітет)
+	{
+		if (isLegal(move))
+		{
+			gboard[move] = computer;
+			found = winnerE() == computer;
+			gboard[move] = EMPTY_E;
+		}
+		if (!found)
+		{
+			move++;
+		}
+	}
+
+	if (!found)
+	{
+		move = 0;
+		char human = opponent(computer);
+
+		while (!found && move < gboard.GetSize())
+		{
+			if (isLegal(move))
+			{
+				gboard[move] = human;
+				found = winnerE() == human;
+				gboard[move] = EMPTY_E;
+			}
+			if (!found)
+			{
+				move++;
+			}
+		}
+	}
+
+	if (!found)
+	{
+		move = 0;
+		unsigned int i = 0;
+		std::vector<int> BEST_MOVE {4, 0, 2, 6, 8, 1, 3, 5, 7};
+
+		while (!found && move < gboard.GetSize())
+		{
+			move = BEST_MOVE[i];
+			if (isLegal(move))
+			{
+				found = true;
+			}
+			i++;
+		}
+	}
+
+	std::cout << "Коп'ютер зробив свій хід!";
+	return move;
 }
 
 char askYesNo(const std::string& question)
