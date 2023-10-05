@@ -23,7 +23,7 @@ const char EMPTY = ' ';
 //inline bool isLegal(int move, const std::vector<char>& board);                   +
 //int humanMove(const std::vector<char>& board, char human);                       +
 //int computerMove(std::vector<char> board, char computer);                        +
-//void anonceWinner(const char& winner, const char& human, const char& computer);
+//void anonceWinner(const char& winner, const char& human, const char& computer);  +
 
 void instruction();
 
@@ -32,32 +32,33 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	Engine eng;
+	GameBoard board;
+	Engine engine;
 	int move = 0;
 
 	instruction();
 
-	char human = eng.humanPiece();
-	char computer = eng.opponent(human);
+	char human = engine.humanPiece();
+	char computer = engine.opponent(human);
 	char turn = X;
-	eng.displayBoardE();
+	board.displayBoard();
 
-	while (eng.winnerE() == NO_ONE)
+	while (board.winner() == NO_ONE)
 	{
 		if (turn == human)
 		{
-			move = eng.humanMove(human);
-			eng[move] = human;
+			move = engine.humanMove(board, human);
+			board[move] = human;
 		}
 		else
 		{
-			move = eng.computerMove(computer);
-			eng[move] = computer;
+			move = engine.computerMove(board, computer);
+			board[move] = computer;
 		}
-		eng.displayBoardE();
-		turn = eng.opponent(turn);
+		board.displayBoard();
+		turn = engine.opponent(turn);
 	}
-	eng.anonceWinner(eng.winnerE(), human, computer);
+	engine.anonceWinner(board.winner(), human, computer);
 	 
 	return 0;
 }

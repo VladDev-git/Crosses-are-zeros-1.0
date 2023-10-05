@@ -15,26 +15,16 @@ class Engine
 {
 private:
 
-	GameBoard gboard;
+	
 public:
 
 	Engine();
 	char opponent(const char& piece);
 	char humanPiece();
-	void displayBoardE();
-	bool isLegal(int move);
-	char winnerE();
-	int humanMove(char human);
-	int computerMove(char computer);
+	bool isLegal(const GameBoard& board, int move);
+	int humanMove(const GameBoard& board, char human);
+	int computerMove(GameBoard& board, char computer);
 	void anonceWinner(const char& winner, const char& human, const char& computer);
-	//size_t GetSizeE();
-
-	GameBoard GetBoard();
-
-	char operator[](int index) const;
-	char& operator[](int index);
-
-	//friend class GameBoard;
 };
 
 char askYesNo(const std::string& question);

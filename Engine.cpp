@@ -1,7 +1,6 @@
 #include "Engine.h"
 
 Engine::Engine()
-	: gboard()
 {
 	
 }
@@ -33,76 +32,36 @@ char Engine::humanPiece()
 	}
 }
 
-void Engine::displayBoardE()
+bool Engine::isLegal(const GameBoard& board, int move)
 {
-	gboard.displayBoard();
+	return board[move] == ' ';
 }
 
-GameBoard Engine::GetBoard()
+int Engine::humanMove(const GameBoard& board, char human)
 {
-	return gboard;
-}
-
-char Engine::operator[](int index) const
-{
-	if (index >= 0 && index < gboard.board.size())
-	{
-		return gboard[index];
-	}
-	else
-	{
-		return '0';
-	}
-}
-
-char& Engine::operator[](int index)
-{
-	if (index >= 0 && index < gboard.board.size())
-	{
-		return gboard[index];
-	}
-	else
-	{
-		static char s = '0';
-		return s;
-	}
-}
-
-bool Engine::isLegal(int move)
-{
-	return gboard[move] == ' ';
-}
-
-char Engine::winnerE()
-{
-	return gboard.winner();
-}
-
-int Engine::humanMove(char human)
-{
-	int move = askNumber("Зробіть свій хід.", (gboard.GetSize() - 1));
-	while (!isLegal(move))
+	int move = askNumber("Зробіть свій хід.", (board.board.size() - 1));
+	while (!isLegal(board, move))
 	{
 		std::cout << "Твій хід неправильний тупа шкіряна істото, спробуй ще раз." << std::endl;
-		move = askNumber("Зробіть свій хід.", (gboard.GetSize() - 1));
+		move = askNumber("Зробіть свій хід.", (board.board.size() - 1));
 	}
 	std::cout << "Хід зроблено.\n";
 
 	return move;
 }
 
-int Engine::computerMove(char computer)
+int Engine::computerMove(GameBoard& board, char computer)
 {
 	unsigned int move = 0;
 	bool found = false;
 
-	while (!found && move < gboard.GetSize()) // Якщо комп'ютер може зробити переможний хід, то він його робить (Найвищий приорітет)
+	while (!found && move < board.board.size()) // Якщо комп'ютер може зробити переможний хід, то він його робить (Найвищий приорітет)
 	{
-		if (isLegal(move))
+		if (isLegal(board, move))
 		{
-			gboard[move] = computer;
-			found = winnerE() == computer;
-			gboard[move] = EMPTY_E;
+			board[move] = computer;
+			found = board.winner() == computer;
+			board[move] = EMPTY_E;
 		}
 		if (!found)
 		{
@@ -115,13 +74,13 @@ int Engine::computerMove(char computer)
 		move = 0;
 		char human = opponent(computer);
 
-		while (!found && move < gboard.GetSize())
+		while (!found && move < board.GetSize())
 		{
-			if (isLegal(move))
+			if (isLegal(board ,move))
 			{
-				gboard[move] = human;
-				found = winnerE() == human;
-				gboard[move] = EMPTY_E;
+				board[move] = human;
+				found = board.winner() == human;
+				board[move] = EMPTY_E;
 			}
 			if (!found)
 			{
@@ -136,10 +95,10 @@ int Engine::computerMove(char computer)
 		unsigned int i = 0;
 		std::vector<int> BEST_MOVE {4, 0, 2, 6, 8, 1, 3, 5, 7};
 
-		while (!found && move < gboard.GetSize())
+		while (!found && move < board.board.size())
 		{
 			move = BEST_MOVE[i];
-			if (isLegal(move))
+			if (isLegal(board, move))
 			{
 				found = true;
 			}
@@ -166,11 +125,6 @@ void Engine::anonceWinner(const char& winner, const char& human, const char& com
 		std::cout << "Нічия! Ти виявився доволі достойним суперником людино.";
 	}
 }
-
-//size_t Engine::GetSizeE()
-//{
-//	return gboard.GetSize();
-//}
 
 char askYesNo(const std::string& question)
 {
