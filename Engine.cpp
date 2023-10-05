@@ -6,7 +6,49 @@ Engine::Engine()
 	
 }
 
-char Engine::askYesNo(const std::string& question)
+char Engine::opponent(const char& piece)
+{
+	if (piece == 'X')
+	{
+		return 'O';
+	}
+	else
+	{
+		return 'X';
+	}
+}
+
+char Engine::humanPiece()
+{
+	char go_first = askYesNo("Бажаєте зробити зробити хід першим?");
+	if (go_first == 'y')
+	{
+		std::cout << "\nВаш хід буде першим!\n";
+		return 'X';
+	}
+	else
+	{
+		std::cout << "\nКомп'ютер ходить першим!\n";
+		return 'O';
+	}
+}
+
+void Engine::displayBoardE()
+{
+	gboard.displayBoard();
+}
+
+GameBoard Engine::GetBoard()
+{
+	return gboard;
+}
+
+bool Engine::isLegal(int move)
+{
+	return gboard[move] == ' ';
+}
+
+char askYesNo(const std::string& question)
 {
 	char response;
 
@@ -19,7 +61,7 @@ char Engine::askYesNo(const std::string& question)
 	return response;
 }
 
-int Engine::askNumber(const std::string& questoin, const int& higth, const int& low)
+int askNumber(const std::string& questoin, const int& higth, const int& low)
 {
 	int number;
 

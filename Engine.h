@@ -1,9 +1,9 @@
 #pragma once
-#include "GameBoard.h"
 #include <iostream>
 #include <string>
+#include "GameBoard.h"
 
-//class GameBoard;
+class GameBoard;
 
 class Engine
 {
@@ -13,8 +13,15 @@ private:
 public:
 
 	Engine();
-	char askYesNo(const std::string& question);
-	int askNumber(const std::string& questoin, const int& higth, const int& low = 0);
-	char
+	char opponent(const char& piece);
+	char humanPiece();
+	void displayBoardE();
+	bool isLegal(int move);
+
+	GameBoard GetBoard();
+
+	friend class GameBoard;
 };
 
+char askYesNo(const std::string& question);
+int askNumber(const std::string& questoin, const int& higth, const int& low = 0);
