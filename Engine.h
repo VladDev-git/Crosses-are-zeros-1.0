@@ -26,6 +26,7 @@ public:
 	char winnerE();
 	int humanMove(char human);
 	int computerMove(char computer);
+	void anonceWinner(const char& winner, const char& human, const char& computer);
 
 	GameBoard GetBoard();
 

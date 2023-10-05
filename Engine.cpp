@@ -126,6 +126,11 @@ int Engine::computerMove(char computer)
 	return move;
 }
 
+void Engine::anonceWinner(const char& winner, const char& human, const char& computer)
+{
+
+}
+
 char askYesNo(const std::string& question)
 {
 	char response;
